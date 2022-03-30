@@ -22,6 +22,10 @@ dependencies {
     implementation "io.quarkus:quarkus-resteasy-qute"
 //    implementation "io.quarkus:quarkus-resteasy-reactive-qute"
 
+    implementation "org.apache.commons:commons-dbcp2:${apacheCommonVersion}"
+    implementation "org.apache.commons:commons-pool2:${apacheCommonVersion}"
+    implementation "com.h2database:h2:${h2Version}"
+
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
 }
