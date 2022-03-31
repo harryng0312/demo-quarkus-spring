@@ -1,11 +1,7 @@
 package org.harryng.demo.quarkusspring.config;
 
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class DbConfig {
@@ -29,15 +25,15 @@ public class DbConfig {
     @ConfigProperty(name="db.maxPoolSize", defaultValue = "")
     private int dbMaxPoolSize;
 
-    @Bean(destroyMethod = "close")
-    public DataSource getDatasource(){
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(dbDriver);
-        dataSource.setUrl(dbUrl);
-        dataSource.setUsername(dbUsername);
-        dataSource.setPassword(dbPassword);
-        dataSource.setInitialSize(dbMinPoolSize);
-        dataSource.setMaxTotal(dbMaxPoolSize);
-        return dataSource;
-    }
+//    @Bean(name = "primary_ds", destroyMethod = "close")
+//    public DataSource getDatasource(){
+//        BasicDataSource dataSource = new BasicDataSource();
+//        dataSource.setDriverClassName(dbDriver);
+//        dataSource.setUrl(dbUrl);
+//        dataSource.setUsername(dbUsername);
+//        dataSource.setPassword(dbPassword);
+//        dataSource.setInitialSize(dbMinPoolSize);
+//        dataSource.setMaxTotal(dbMaxPoolSize);
+//        return dataSource;
+//    }
 }

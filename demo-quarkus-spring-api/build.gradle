@@ -5,4 +5,5 @@ plugins {
 
 dependencies {
 //    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation "io.quarkus:quarkus-spring-data-jpa:${quarkusPlatformVersion}"
 }
