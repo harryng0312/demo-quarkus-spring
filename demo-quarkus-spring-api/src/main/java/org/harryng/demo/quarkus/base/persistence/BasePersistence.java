@@ -10,8 +10,8 @@ interface BasePersistence<Id extends Serializable, T extends BaseEntity<Id>> {
     public Class<T> getEntityClass();
     public EntityManager getEntityManager();
 
-    public T selectById(Id id) throws RuntimeException;
-    public int insert(T obj) throws RuntimeException;
-    public int update(T obj) throws RuntimeException;
-    public int delete(Id obj) throws RuntimeException;
+    public T selectById(Id id) throws RuntimeException, Exception;
+    public int insert(T obj) throws RuntimeException, Exception;
+    public int update(T obj) throws RuntimeException, Exception;
+    public int delete(Id obj) throws RuntimeException, Exception;
 }

@@ -1,15 +1,25 @@
 package org.harryng.demo.quarkus.base.persistence;
 
+import io.quarkus.hibernate.orm.PersistenceUnit;
 import org.harryng.demo.quarkus.base.entity.BaseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.Root;
 import java.io.Serializable;
 
 public abstract class AbstractPersistence<Id extends Serializable, T extends BaseEntity<Id>>
-        extends BasePersistence<Id, T> {
-//    @Autowired
-//    @Qualifier("entityManagerFactory")
-    @PersistenceUnit(name = "primary_pu")
+        implements BasePersistence<Id, T> {
+
+    protected Class<T> entityClass;
+
+    @Autowired
+    @PersistenceUnit("primary_pu")
     private EntityManager defaultEntityManager;
+
     public EntityManager getEntityManager(){
         return defaultEntityManager;
     }
@@ -18,24 +28,22 @@ public abstract class AbstractPersistence<Id extends Serializable, T extends Bas
         return getEntityManager().find(entityClass, id);
     }
 
-    @Throws(RuntimeException::class, Exception::class) public int insert(T obj: T): Int {
-        entityManager.persist(obj)
-        return 1
+    public int insert(T obj) throws RuntimeException, Exception {
+        getEntityManager().persist(obj);
+        return 1;
     }
 
-    @Throws(RuntimeException::class, Exception::class)
-    override fun update(obj: T): Int {
-        entityManager.merge(obj)
-        return 1
+    public int update(T obj) throws RuntimeException, Exception {
+        getEntityManager().merge(obj);
+        return 1;
     }
 
-    @Throws(RuntimeException::class, Exception::class)
-    override fun delete(id: Id): Int {
-        val cb = entityManager.criteriaBuilder
-        val criteriaDelete = cb.createCriteriaDelete(entityClass)
-        val root = criteriaDelete.from(entityClass)
-        criteriaDelete.where(cb.equal(root.get<Any>("id"), id))
-        val query = entityManager.createQuery(criteriaDelete)
-        return query.executeUpdate()
+    public int delete(Id id) throws RuntimeException, Exception {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaDelete<T> criteriaDelete = cb.createCriteriaDelete(entityClass);
+        Root<T> root = criteriaDelete.from(entityClass);
+        criteriaDelete.where(cb.equal(root.get("id"), id));
+        Query query = getEntityManager().createQuery(criteriaDelete);
+        return query.executeUpdate();
     }
 }
