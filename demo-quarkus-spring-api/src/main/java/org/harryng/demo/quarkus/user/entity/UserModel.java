@@ -13,6 +13,8 @@ public class UserModel extends AbstractStatedEntity<Long> {
     private LocalDate dob;
     private String passwdEncryptedMethod;
 
+    public UserModel(){super();}
+
     public UserModel(Long id, LocalDateTime createdDate, LocalDateTime modifiedDate, String status,
                      String username, String password, String screenName, LocalDate dob, String passwdEncryptedMethod){
         super(id, createdDate, modifiedDate, status);

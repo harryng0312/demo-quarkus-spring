@@ -26,8 +26,8 @@ public class IndexController {
     @Location("pages/index.html")
     private Template indexTempl;
 
-    @Autowired
-    @Qualifier("primary_ds")
+//    @Autowired
+//    @Qualifier("primary_ds")
     private DataSource dataSource;
 
     @PostConstruct

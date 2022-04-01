@@ -5,6 +5,9 @@ import java.io.Serializable;
 
 public abstract class AbstractEntity<Id extends Serializable> implements BaseEntity<Id>{
     private Id id;
+
+    protected AbstractEntity(){}
+
     protected AbstractEntity(Id id){
         this.id = id;
     }

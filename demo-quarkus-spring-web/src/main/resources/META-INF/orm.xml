@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd"
-                 version="2.2">
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+                 version="2.1">
     <persistence-unit-metadata>
         <persistence-unit-defaults>
             <access>PROPERTY</access>
@@ -38,5 +38,30 @@
         </attributes>
     </mapped-superclass>
 
-<!--    <converter class="org.harryng.communication.util.persistence.AtomicLongConverter" auto-apply="true"/>-->
+    <!--    <converter class="org.harryng.communication.util.persistence.AtomicLongConverter" auto-apply="true"/>-->
+
+    <mapped-superclass class="org.harryng.demo.quarkus.user.entity.UserModel">
+        <attributes>
+            <basic name="username">
+                <column name="username"/>
+            </basic>
+            <basic name="password">
+                <column name="password"/>
+            </basic>
+            <basic name="screenName">
+                <column name="screenname"/>
+            </basic>
+            <basic name="dob">
+                <column name="dob"/>
+                <temporal>DATE</temporal>
+            </basic>
+            <basic name="passwdEncryptedMethod">
+                <column name="passwd_enc_method"/>
+            </basic>
+        </attributes>
+    </mapped-superclass>
+
+    <entity class="org.harryng.demo.quarkus.user.entity.UserImpl">
+        <table name="user_"/>
+    </entity>
 </entity-mappings>

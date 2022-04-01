@@ -14,7 +14,7 @@ import java.io.Serializable;
 public abstract class AbstractPersistence<Id extends Serializable, T extends BaseEntity<Id>>
         implements BasePersistence<Id, T> {
 
-    protected Class<T> entityClass;
+    private Class<T> entityClass;
 
     @Autowired
     @PersistenceUnit("primary_pu")
@@ -24,8 +24,16 @@ public abstract class AbstractPersistence<Id extends Serializable, T extends Bas
         return defaultEntityManager;
     }
 
+    public Class<T> getEntityClass(){
+        return entityClass;
+    }
+
+    protected AbstractPersistence(Class<T> entityClass){
+        this.entityClass = entityClass;
+    }
+
     public T selectById(Id id) throws RuntimeException, Exception {
-        return getEntityManager().find(entityClass, id);
+        return getEntityManager().find(getEntityClass(), id);
     }
 
     public int insert(T obj) throws RuntimeException, Exception {
@@ -40,8 +48,8 @@ public abstract class AbstractPersistence<Id extends Serializable, T extends Bas
 
     public int delete(Id id) throws RuntimeException, Exception {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaDelete<T> criteriaDelete = cb.createCriteriaDelete(entityClass);
-        Root<T> root = criteriaDelete.from(entityClass);
+        CriteriaDelete<T> criteriaDelete = cb.createCriteriaDelete(getEntityClass());
+        Root<T> root = criteriaDelete.from(getEntityClass());
         criteriaDelete.where(cb.equal(root.get("id"), id));
         Query query = getEntityManager().createQuery(criteriaDelete);
         return query.executeUpdate();

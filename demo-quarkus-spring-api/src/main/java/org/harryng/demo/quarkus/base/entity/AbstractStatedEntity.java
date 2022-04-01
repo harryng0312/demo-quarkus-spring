@@ -8,6 +8,8 @@ public abstract class AbstractStatedEntity<Id extends Serializable> extends Abst
     private LocalDateTime modifiedDate;
     private String status;
 
+    protected AbstractStatedEntity(){super();}
+
     protected AbstractStatedEntity(Id id, LocalDateTime createdDate, LocalDateTime modifiedDate, String status){
         super(id);
         this.createdDate = createdDate;
