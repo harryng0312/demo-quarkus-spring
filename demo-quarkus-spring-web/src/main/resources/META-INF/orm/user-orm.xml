@@ -16,7 +16,6 @@
             </basic>
             <basic name="dob">
                 <column name="dob"/>
-                <temporal>DATE</temporal>
             </basic>
             <basic name="passwdEncryptedMethod">
                 <column name="passwd_enc_method"/>

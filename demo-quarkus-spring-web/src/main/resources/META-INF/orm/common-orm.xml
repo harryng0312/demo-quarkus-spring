@@ -26,11 +26,9 @@
         <attributes>
             <basic name="createdDate">
                 <column name="created_date"/>
-                <temporal>TIMESTAMP</temporal>
             </basic>
             <basic name="modifiedDate">
                 <column name="modified_date"/>
-                <temporal>TIMESTAMP</temporal>
             </basic>
             <basic name="status">
                 <column name="status"/>
