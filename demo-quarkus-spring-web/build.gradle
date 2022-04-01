@@ -19,6 +19,9 @@ dependencies {
     implementation "io.quarkus:quarkus-cache"
     implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-resteasy-jackson'
+    implementation "io.quarkus:quarkus-scheduler"
+    implementation "io.quarkus:quarkus-quartz"
+    implementation "io.quarkus:quarkus-security"
 
     implementation "io.quarkus:quarkus-resteasy-qute"
 //    implementation "io.quarkus:quarkus-resteasy-reactive-qute"
@@ -28,6 +31,11 @@ dependencies {
 //    implementation "com.h2database:h2:${h2Version}"
     implementation "io.quarkus:quarkus-hibernate-orm"
     implementation "io.quarkus:quarkus-jdbc-h2"
+
+    implementation "org.bouncycastle:bcprov-jdk15on"
+    implementation "org.bouncycastle:bctls-jdk15on"
+//    implementation "org.bouncycastle:bc-fips"
+//    implementation "org.bouncycastle:bctls-fips"
 
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
