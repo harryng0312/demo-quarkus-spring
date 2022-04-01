@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "user_")
+//@Entity
+//@Table(name = "user_")
 public class UserImplBak {//extends UserModel {
 
     //    public UserImpl(Long id, LocalDateTime createdDate, LocalDateTime modifiedDate, String status,
