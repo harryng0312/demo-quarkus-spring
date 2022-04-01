@@ -26,11 +26,9 @@
         <attributes>
             <basic name="createdDate">
                 <column name="created_date"/>
-                <temporal>TIMESTAMP</temporal>
             </basic>
             <basic name="modifiedDate">
                 <column name="modified_date"/>
-                <temporal>TIMESTAMP</temporal>
             </basic>
             <basic name="status">
                 <column name="status"/>
@@ -53,7 +51,6 @@
             </basic>
             <basic name="dob">
                 <column name="dob"/>
-                <temporal>DATE</temporal>
             </basic>
             <basic name="passwdEncryptedMethod">
                 <column name="passwd_enc_method"/>
