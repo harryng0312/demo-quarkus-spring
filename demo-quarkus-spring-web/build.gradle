@@ -16,6 +16,7 @@ dependencies {
     implementation 'io.quarkus:quarkus-spring-cloud-config-client'
     implementation 'io.quarkus:quarkus-spring-data-jpa'
     implementation 'io.quarkus:quarkus-spring-boot-properties'
+    implementation "io.quarkus:quarkus-cache"
     implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-resteasy-jackson'
 

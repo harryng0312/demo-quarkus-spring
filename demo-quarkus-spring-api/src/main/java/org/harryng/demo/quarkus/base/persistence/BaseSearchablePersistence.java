@@ -12,12 +12,12 @@ public interface BaseSearchablePersistence<Id extends Serializable, T extends Ba
     public long countByConditions(
             String countJpql,
             Map<String, Serializable> params
-    ) throws RuntimeException;
+    ) throws RuntimeException, Exception;
 
     public Page<T> selectByConditions(
             String queryJpql,
             Map<String, Serializable> params,
             Pageable pageInfo,
             long total
-    ) throws RuntimeException;
+    ) throws RuntimeException, Exception;
 }

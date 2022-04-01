@@ -36,5 +36,5 @@
         </attributes>
     </mapped-superclass>
 
-<!--    <converter class="org.harryng.communication.util.persistence.AtomicLongConverter" auto-apply="true"/>-->
+    <converter class="org.harryng.demo.quarkus.util.persistence.AtomicLongConverter" auto-apply="true"/>
 </entity-mappings>
