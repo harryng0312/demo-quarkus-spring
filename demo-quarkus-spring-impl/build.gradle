@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation project(":demo-quarkus-spring-api")
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation "io.quarkus:quarkus-spring-di:${quarkusPlatformVersion}"
     implementation "io.quarkus:quarkus-spring-data-jpa:${quarkusPlatformVersion}"
     implementation "io.quarkus:quarkus-cache:${quarkusPlatformVersion}"
 

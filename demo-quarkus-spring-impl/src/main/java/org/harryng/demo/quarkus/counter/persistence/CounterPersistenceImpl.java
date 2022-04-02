@@ -5,11 +5,15 @@ import io.quarkus.cache.CacheManager;
 import io.quarkus.hibernate.orm.PersistenceUnit;
 import org.harryng.demo.quarkus.counter.entity.CounterImpl;
 import org.harryng.demo.quarkus.kernel.counter.CounterPersistence;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import java.util.concurrent.atomic.AtomicLong;
 
+@Repository("counterPersistence")
 public class CounterPersistenceImpl implements CounterPersistence {
 
     protected static Object lock = new Object();
